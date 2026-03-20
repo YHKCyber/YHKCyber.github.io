@@ -1,1 +1,710 @@
-<meta http-equiv="refresh" content="0; url=https://youtu.be/-vSk2hRdRpw/">
+<!DOCTYPE html>
+
+<!-- Developed in part by Claude Sonnet 4.6. -->
+<!-- Footage obtained through Pexels -->
+<!-- Thanks for stopping by. -YHK -->
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yegor H. Kryvenka | About Me</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Great+Vibes&family=DM+Sans:ital,wght@1,300;1,400&family=Josefin+Sans:wght@100;300&family=Bebas+Neue&family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #060606;
+      --off-white: #e8e4dc;
+      --rule: rgba(232,228,220,0.13);
+    }
+
+    html {
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+      height: 100%;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--off-white);
+      height: 100%;
+      cursor: none;
+    }
+
+    /* ── CURSOR ─────────────────────────────────────────── */
+    #cur {
+      position: fixed;
+      width: 6px; height: 6px;
+      background: var(--off-white);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%,-50%);
+      transition: width .18s, height .18s;
+      mix-blend-mode: difference;
+    }
+    #cur.big {
+      width: 30px; height: 30px;
+      background: transparent;
+      border: 1px solid var(--off-white);
+      border-radius: 50%;
+    }
+
+    /* ── GRAIN ──────────────────────────────────────────── */
+    #grain {
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 9000;
+      opacity: 0.045;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+
+    /* ══ PAGE 1 ════════════════════════════════════════════ */
+    #p1 {
+      scroll-snap-align: start;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #sky {
+      position: absolute; inset: 0; z-index: 0;
+      background: #060606;
+    }
+    video#sky {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
+    }
+    #sky-overlay {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: radial-gradient(ellipse at 50% 40%, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.62) 100%);
+    }
+
+    #p1::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 180px;
+      background: linear-gradient(to bottom, transparent, var(--black));
+      z-index: 2; pointer-events: none;
+    }
+
+    /* ── NAVBAR (page 1 only) ──────────────────────────── */
+    #navbar {
+      position: absolute; top: 0; left: 0; right: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px clamp(24px, 5vw, 72px);
+      border-bottom: 1px solid rgba(232,228,220,0.1);
+    }
+    .nav-mark {
+      font-family: 'Cinzel', serif;
+      font-size: 13px; font-weight: 600;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(232,228,220,0.55);
+    }
+    .nav-contact {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px; letter-spacing: 0.08em;
+      color: rgba(232,228,220,0.45);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(232,228,220,0.15);
+      padding-bottom: 1px;
+      transition: color .2s, border-color .2s;
+    }
+    .nav-contact:hover {
+      color: var(--off-white);
+      border-color: rgba(232,228,220,0.5);
+    }
+
+    #yhk-wrap {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+    }
+
+    #yhk {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(96px, 19vw, 210px);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      font-style: normal;
+      color: var(--off-white);
+      display: block;
+      opacity: 0;
+      text-shadow: 0 0 140px rgba(232,228,220,0.06);
+    }
+    /* Added only when Playfair settles — nudges it up to match the
+       optical centre the cycling fonts naturally hit via flexbox.   */
+    #yhk.settled {
+      margin-top: -44px;
+      transition: letter-spacing 0.55s ease;
+    }
+
+    .scroll-hint {
+      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+      z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 12px;
+      opacity: 0; animation: fadeIn 1s 2.6s ease forwards;
+    }
+    .scroll-hint span {
+      font-family: 'Cinzel', serif; font-size: 9px;
+      letter-spacing: 0.4em; text-transform: uppercase;
+      color: rgba(232,228,220,0.28);
+    }
+    .drip {
+      width: 1px; height: 52px;
+      background: linear-gradient(to bottom, rgba(232,228,220,0.3), transparent);
+      animation: drip 2.2s 3s ease infinite;
+      transform-origin: top; transform: scaleY(0);
+    }
+
+    /* ══ PAGE 2 ════════════════════════════════════════════ */
+    #p2 {
+      scroll-snap-align: start;
+      min-height: 100vh;
+      background: var(--black);
+      padding: clamp(52px, 7vw, 100px) clamp(28px, 8vw, 140px);
+    }
+
+    .cv-head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      flex-wrap: wrap; gap: 10px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--off-white);
+      margin-bottom: 52px;
+    }
+    .cv-name {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(16px, 2.2vw, 24px);
+      font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+    }
+    .cv-meta {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px; letter-spacing: 0.05em;
+      color: rgba(232,228,220,0.42); text-align: right;
+    }
+    .cv-meta a { color: inherit; text-decoration: none; transition: color .2s; }
+    .cv-meta a:hover { color: var(--off-white); }
+
+    .sec { margin-bottom: 48px; }
+
+    .sec-label {
+      font-family: 'Cinzel', serif; font-size: 10px;
+      letter-spacing: 0.4em; text-transform: uppercase;
+      color: rgba(232,228,220,0.28);
+      padding-bottom: 10px; margin-bottom: 24px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .row {
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 16px; margin-bottom: 26px; align-items: start;
+    }
+    .row-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(17px, 1.9vw, 20px); font-weight: 600;
+      color: var(--off-white); line-height: 1.35;
+    }
+    .row-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px; font-style: italic;
+      color: rgba(232,228,220,0.42); margin-top: 3px;
+    }
+    .row-note {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      color: rgba(232,228,220,0.36); margin-top: 5px; line-height: 1.65;
+    }
+    .row-date {
+      font-family: 'IM Fell English', serif; font-size: 13px;
+      color: rgba(232,228,220,0.3); white-space: nowrap; margin-top: 3px;
+    }
+    .blist {
+      list-style: none; margin-top: 10px;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .blist li {
+      font-family: 'Cormorant Garamond', serif; font-size: 15px;
+      line-height: 1.65; color: rgba(232,228,220,0.58);
+      padding-left: 16px; position: relative;
+    }
+    .blist li::before { content:'·'; position:absolute; left:4px; color:rgba(232,228,220,0.25); }
+
+    /* skill rows */
+    .sk-block { margin-bottom: 13px; }
+    .sk-label {
+      font-family: 'Cinzel', serif; font-size: 9px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(232,228,220,0.28); display: inline-block; margin-right: 12px;
+    }
+    .sk-items {
+      font-family: 'Cormorant Garamond', serif; font-size: 15px;
+      color: rgba(232,228,220,0.58); display: inline;
+    }
+
+    /* rank badge */
+    .badge {
+      font-family: 'Playfair Display', serif; font-weight: 900;
+      font-size: 12px; letter-spacing: 0.05em;
+      color: var(--off-white); background: rgba(232,228,220,0.1);
+      padding: 2px 9px; margin-right: 8px; display: inline-block;
+    }
+
+    /* callout block */
+    .callout {
+      border-left: 1px solid rgba(232,228,220,0.18);
+      padding: 14px 0 14px 20px;
+      margin-top: 10px;
+    }
+    .callout p {
+      font-family: 'Cormorant Garamond', serif; font-size: 15px;
+      line-height: 1.75; color: rgba(232,228,220,0.55);
+    }
+    .callout p strong {
+      color: rgba(232,228,220,0.85); font-weight: 600;
+    }
+    .callout a {
+      color: rgba(232,228,220,0.55); text-decoration: none;
+      border-bottom: 1px solid rgba(232,228,220,0.18);
+      transition: color .2s, border-color .2s;
+    }
+    .callout a:hover { color: var(--off-white); border-color: rgba(232,228,220,0.5); }
+
+    /* links */
+    .links { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 6px; }
+    .lnk {
+      font-family: 'Cormorant Garamond', serif; font-size: 15px;
+      color: rgba(232,228,220,0.38); text-decoration: none;
+      border-bottom: 1px solid rgba(232,228,220,0.1); padding-bottom: 1px;
+      transition: color .2s, border-color .2s; letter-spacing: 0.03em;
+    }
+    .lnk:hover { color: var(--off-white); border-color: rgba(232,228,220,0.45); }
+    .ph { font-style: italic; opacity: 0.55; }
+
+    /* footer */
+    .cv-foot {
+      margin-top: 60px; padding-top: 18px;
+      border-top: 1px solid var(--rule);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .cv-foot span {
+      font-family: 'Cinzel', serif; font-size: 11px;
+      letter-spacing: 0.25em; color: rgba(232,228,220,0.18);
+    }
+
+    /* ── KEYFRAMES ──────────────────────────────────────── */
+    @keyframes fadeIn { to { opacity: 1; } }
+    @keyframes drip {
+      0%   { transform: scaleY(0); opacity: 1; }
+      65%  { transform: scaleY(1); opacity: 1; }
+      100% { transform: scaleY(1); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="grain"></div>
+
+<!-- ══════════ PAGE 1 ══════════ -->
+<section id="p1">
+  <video autoplay muted loop playsinline id="sky">
+    <source src="yhk-skyloop.mp4" type="video/mp4">
+  </video>
+  <div id="sky-overlay"></div>
+  <nav id="navbar">
+    <span class="nav-mark">YEGOR H. KRYVENKA</span>
+    <a class="nav-contact" href="https://www.linkedin.com/in/yegor-k-9618b8366" target="_blank" rel="noopener">Contact</a>
+  </nav>
+  <div id="yhk-wrap">
+    <span id="yhk">YHK</span>
+  </div>
+  <div class="scroll-hint">
+    <span>scroll</span>
+    <div class="drip"></div>
+  </div>
+</section>
+
+<!-- ══════════ PAGE 2 ══════════ -->
+<section id="p2">
+
+  <div class="cv-head">
+    <span class="cv-name">Yegor H. Kryvenka</span>
+    <div class="cv-meta">Maryland Based · Open to Local &amp; Remote Internships</div>
+  </div>
+
+  <!-- ── EDUCATION ─────────────────────────────────────── -->
+  <div class="sec">
+    <p class="sec-label">Education &amp; Certifications</p>
+
+    <div class="row">
+      <div>
+        <p class="row-title">A.A.S. in Cybersecurity — Montgomery College, Germantown</p>
+        <p class="row-sub">GPA 3.88</p>
+        <p class="row-note">
+          NSA &amp; DHS-designated <em>Center of Academic Excellence in Cyber Defense</em> (CAE-CD) — curriculum mapped to CNSS 4011 standards, ranked among the top Cybersecurity Associate's programs in the U.S. Coursework conducted in a state-of-the-art cyber lab capable of hosting 100+ virtual servers and 250+ virtual desktops.
+        </p>
+      </div>
+      <span class="row-date">Expected May 2026</span>
+    </div>
+
+    <div class="row">
+      <div>
+        <p class="row-title">High School Diploma — Richard Montgomery High School</p>
+        <p class="row-note">
+          Participating in the Early College Program: simultaneously earning a high school diploma and an Associate's degree through a dual-enrollment partnership with Montgomery College.
+        </p>
+      </div>
+      <span class="row-date">Expected May 2026</span>
+    </div>
+
+    <div class="row">
+      <div>
+        <p class="row-title">CompTIA Security+ CE</p>
+        <p class="row-sub">Network security, threat detection, cryptography, risk management</p>
+      </div>
+      <span class="row-date">Apr 2025</span>
+    </div>
+  </div>
+
+  <!-- ── SKILLS ─────────────────────────────────────────── -->
+  <div class="sec">
+    <p class="sec-label">Technical Skills</p>
+    <div class="sk-block">
+      <span class="sk-label">Security</span>
+      <span class="sk-items">OSINT · Reconnaissance · Network Traffic Analysis · Penetration Testing · Password Cracking · Digital Forensics · IAM · Vulnerability Management (Nessus) · Incident Response · Endpoint Security</span>
+    </div>
+    <div class="sk-block">
+      <span class="sk-label">Tools</span>
+      <span class="sk-items">Wireshark · Tenable Nessus · Kali Linux · OpenVPN · FTK Imager · Autopsy · Cockpit</span>
+    </div>
+    <div class="sk-block">
+      <span class="sk-label">Platforms</span>
+      <span class="sk-items">AWS · Azure · VirtualBox · VMware Fusion · Linux (Ubuntu, Parrot, Kali) · Windows Server · Windows 10/11 · macOS</span>
+    </div>
+    <div class="sk-block">
+      <span class="sk-label">Code</span>
+      <span class="sk-items">Python · Java · HTML / CSS</span>
+    </div>
+    <div class="sk-block">
+      <span class="sk-label">Office</span>
+      <span class="sk-items">Microsoft 365 · Google Workspace · Adobe Creative Cloud</span>
+    </div>
+    <div class="sk-block">
+      <span class="sk-label">Languages</span>
+      <span class="sk-items">English — Native · Russian — Fluent</span>
+    </div>
+  </div>
+
+  <!-- ── COMPETITIONS ───────────────────────────────────── -->
+  <div class="sec">
+    <p class="sec-label">Competitions &amp; Applied Experience</p>
+
+    <div class="row">
+      <div>
+        <p class="row-title"><span class="badge">1st</span>2026 PICMC Cyber Challenge</p>
+        <ul class="blist">
+          <li>Team captain of Suruzal — 5-person team under timed competitive conditions</li>
+          <li>Identified social engineering tactics, including AI-generated deepfakes and SMS phishing (smishing)</li>
+          <li>Applied OPSEC fundamentals to assess digital security posture and data protection strategies</li>
+        </ul>
+      </div>
+      <span class="row-date">Jan 2026</span>
+    </div>
+
+    <div class="row">
+      <div>
+        <p class="row-title"><span class="badge">1st</span>MAGIC CTF 18 — Westminster, MD</p>
+        <ul class="blist">
+          <li>International CTF competition · <strong style="color:var(--off-white);">1st of ~25 teams</strong> · represented Richard Montgomery High School</li>
+        </ul>
+      </div>
+      <span class="row-date">Apr 2025</span>
+    </div>
+
+    <div class="row">
+      <div>
+        <p class="row-title"><span class="badge">2nd</span>Lockheed Martin Cyberquest Competition</p>
+        <ul class="blist">
+          <li>CTF-style competition against high school teams across the region</li>
+          <li>Challenges spanning reverse engineering, web exploitation, forensics, cryptography, network security, and log analysis</li>
+          <li><strong style="color:var(--off-white);">2nd of ~35 teams</strong> competing as "EternalBlue"</li>
+        </ul>
+      </div>
+      <span class="row-date">Mar 2025</span>
+    </div>
+
+    <div class="row">
+      <div>
+        <p class="row-title"><span class="badge">3rd</span>VelocityX Cyber Escape Room Challenge</p>
+        <ul class="blist">
+          <li><strong style="color:var(--off-white);">Team leader</strong> for "The Dawgs" in a cybersecurity awareness-themed escape room challenge</li>
+          <li>Coordinated team strategy across cryptography, forensics, and log analysis puzzles</li>
+          <li><strong style="color:var(--off-white);">3rd of 15 teams</strong></li>
+        </ul>
+      </div>
+      <span class="row-date">Apr 2025</span>
+    </div>
+
+    <div class="row">
+      <div>
+        <p class="row-title">National Cyber League — Fall 2025 Season</p>
+        <ul class="blist">
+          <li>Led 4 Montgomery College Cybersecurity Club teams comprising 22 participants</li>
+          <li>Coached Network Traffic Analysis, Web Application Exploitation, and Log Analysis</li>
+          <li>79th percentile as a team · <strong style="color:var(--off-white);">93rd percentile individually</strong></li>
+        </ul>
+      </div>
+      <span class="row-date">Nov 2025</span>
+    </div>
+  </div>
+
+  <!-- ── COURSEWORK ─────────────────────────────────────── -->
+  <div class="sec">
+    <p class="sec-label">Relevant Coursework</p>
+
+    <div class="row" style="margin-bottom:14px;">
+      <div>
+        <p class="row-title">Microcomputer Essentials — NWIT 127 <span style="font-weight:300;font-style:italic;color:rgba(232,228,220,0.38);font-size:13px;">(A+ aligned)</span></p>
+        <p class="row-note">Hardware, peripheral, networking, and security components; OS fundamentals and troubleshooting methodology.</p>
+      </div>
+      <span class="row-date">Montgomery College</span>
+    </div>
+
+    <div class="row" style="margin-bottom:14px;">
+      <div>
+        <p class="row-title">Introduction to Networking — NWIT 151 <span style="font-weight:300;font-style:italic;color:rgba(232,228,220,0.38);font-size:13px;">(CCNA aligned)</span></p>
+        <p class="row-note">OSI reference model, TCP/IP suite, LAN/WAN topologies, subnetting, routing protocols, and network troubleshooting.</p>
+      </div>
+      <span class="row-date">Montgomery College</span>
+    </div>
+
+    <div class="row" style="margin-bottom:14px;">
+      <div>
+        <p class="row-title">Network Security — NWIT 173 <span style="font-weight:300;font-style:italic;color:rgba(232,228,220,0.38);font-size:13px;">(Security+ aligned)</span></p>
+        <p class="row-note">Access control, cryptography, firewalls, vulnerability assessment, and the OSI security model. Curriculum maps to CNSS 4011.</p>
+      </div>
+      <span class="row-date">Montgomery College</span>
+    </div>
+
+    <div class="row" style="margin-bottom:14px;">
+      <div>
+        <p class="row-title">Introduction to Cloud Computing — NWIT 105 <span style="font-weight:300;font-style:italic;color:rgba(232,228,220,0.38);font-size:13px;">(AWS-CCP aligned)</span></p>
+        <p class="row-note">Cloud service models (IaaS, PaaS, SaaS), deployment models, virtualization fundamentals, and major providers (AWS, Azure, GCP).</p>
+      </div>
+      <span class="row-date">Montgomery College</span>
+    </div>
+
+    <div class="row" style="margin-bottom:14px;">
+      <div>
+        <p class="row-title">Introduction to Scripting — CMSC 135 <span style="font-weight:300;font-style:italic;color:rgba(232,228,220,0.38);font-size:13px;">(Python)</span></p>
+        <p class="row-note">Scripting with Python, Perl, and PowerShell — rapid prototyping, automation, web programming, and system administration tasks.</p>
+      </div>
+      <span class="row-date">Montgomery College</span>
+    </div>
+
+    <div class="row" style="margin-bottom:14px;">
+      <div>
+        <p class="row-title">UNIX/Linux System Administration — CMSC 253 <span style="font-weight:300;font-style:italic;color:rgba(232,228,220,0.38);font-size:13px;">(Linux+ aligned)</span></p>
+        <p class="row-note">User and process management, file systems, services, networking configuration, and systemctl on Ubuntu/Kali environments.</p>
+      </div>
+      <span class="row-date">Montgomery College</span>
+    </div>
+
+    <div class="row" style="margin-bottom:14px;">
+      <div>
+        <p class="row-title">Attacker Tools &amp; Techniques — NWIT 246</p>
+        <p class="row-note">Methods attackers use to compromise target networks — initial reconnaissance, footprinting, scanning, and exploitation. Hands-on lab work in an isolated environment.</p>
+      </div>
+      <span class="row-date">Montgomery College</span>
+    </div>
+
+    <div class="row" style="margin-bottom:14px;">
+      <div>
+        <p class="row-title">Introduction to Digital Forensics — NWIT 263</p>
+        <p class="row-note">Evidence acquisition and analysis using FTK Imager and Autopsy; Windows Registry examination; chain of custody and forensic methodology.</p>
+      </div>
+      <span class="row-date">Montgomery College</span>
+    </div>
+
+    <div class="row" style="margin-bottom:14px;">
+      <div>
+        <p class="row-title">Defending the Network — NWIT 245</p>
+        <p class="row-note">IDS/IPS, VPNs, ACLs, MITRE ATT&amp;CK framework, and the CIA Triad applied to enterprise defense strategies.</p>
+      </div>
+      <span class="row-date">Montgomery College</span>
+    </div>
+  </div>
+
+  <!-- ── LEADERSHIP ─────────────────────────────────────── -->
+  <div class="sec">
+    <p class="sec-label">Leadership &amp; Involvement</p>
+
+    <div class="row">
+      <div>
+        <p class="row-title">President — Montgomery College Cybersecurity Club</p>
+        <p class="row-sub">May 2025 – Present</p>
+        <ul class="blist">
+          <li>Leading the club on the Germantown Campus, organizing competition teams, practice sessions, and skill-building workshops</li>
+          <li>Dedicated to fostering cybersecurity innovation and collaboration within the educational community</li>
+        </ul>
+        <div class="callout">
+          <p>
+            <strong>RaptorHacks —</strong> Hosting Montgomery College's official hackathon, featuring a dedicated <strong>Cybersecurity track</strong> judged by industry professionals. Free for all MC students.
+            Demo Day: <strong>April 11th, Germantown Campus.</strong>
+            Register at <a href="https://raptorhacks.com" target="_blank" rel="noopener">raptorhacks.com</a>
+          </p>
+        </div>
+      </div>
+      <span class="row-date">2025 – Present</span>
+    </div>
+
+    <div class="row">
+      <div>
+        <p class="row-title">Vice President — Richard Montgomery High School Robotics Team</p>
+        <p class="row-sub">Dec 2023 – Dec 2025</p>
+        <ul class="blist">
+          <li>Supported strategic planning, team coordination, and competition preparation</li>
+          <li>Developed skills in team leadership, public speaking, and cross-functional collaboration</li>
+        </ul>
+      </div>
+      <span class="row-date">2 yrs</span>
+    </div>
+
+    <div class="row">
+      <div>
+        <p class="row-title">Co-Founder — Richard Montgomery High School Cybersecurity Team</p>
+        <p class="row-sub">Jul 2024 – Aug 2025</p>
+        <ul class="blist">
+          <li>Established the school's first dedicated cybersecurity team, creating a pathway for students to enter competitive CTF and security events</li>
+          <li>Applied startup leadership, project management, and curriculum development skills</li>
+        </ul>
+      </div>
+      <span class="row-date">1 yr 2 mos</span>
+    </div>
+
+    <div class="row">
+      <div>
+        <p class="row-title">Dale Carnegie Young Adult Leadership Program</p>
+        <ul class="blist">
+          <li>Intensive training in public speaking, interpersonal communication, and team leadership</li>
+          <li><strong style="color:var(--off-white);">Dale Carnegie Highest Award for Achievement</strong> — voted most passionate and successful student in the cohort by peers and instructors</li>
+        </ul>
+      </div>
+      <span class="row-date">Feb 2024</span>
+    </div>
+
+    <div class="row">
+      <div>
+        <p class="row-title">MCLeads — L.E.A.D.S. Program</p>
+        <ul class="blist">
+          <li>10-week leadership development program focused on social change and socially responsible leadership</li>
+          <li>Built competencies in self-assessment, strategic vision, delegation, and engaging diverse perspectives</li>
+        </ul>
+      </div>
+      <span class="row-date">Jan 2025</span>
+    </div>
+  </div>
+
+  <!-- ── LINKS ──────────────────────────────────────────── -->
+  <div class="sec">
+    <p class="sec-label">Profiles &amp; Links</p>
+    <div class="links">
+      <a class="lnk" href="https://www.linkedin.com/in/yegor-k-9618b8366" target="_blank" rel="noopener">LinkedIn<span class="ph"> — Yegor Kryvenka</span></a>
+      <a class="lnk" href="https://cyberskyline.com/report/HUC5VA6VLWM4" target="_blank" rel="noopener">NCL<span class="ph"> — Scouting Report</span></a>
+      <a class="lnk" href="https://github.com/YHKCyber" target="_blank" rel="noopener">GitHub<span class="ph"> — YHKCyber</span></a>
+      <a class="lnk" href="https://www.credly.com/badges/71181040-3236-499c-9ae0-dd2da5689234/public_url" target="_blank" rel="noopener">CompTIA Security+<span class="ph"> — Credly</span></a>
+      <a class="lnk" href="https://raptorhacks.com" target="_blank" rel="noopener">RaptorHacks<span class="ph"> — MC Hackathon</span></a>
+    </div>
+  </div>
+
+  <div class="cv-foot">
+    <span>YHK</span>
+    <span>Updated March 2026</span>
+  </div>
+
+</section>
+
+<script>
+  /* ── CURSOR ──────────────────────────────────────────── */
+  const cur = document.getElementById('cur');
+  document.addEventListener('mousemove', e => {
+    cur.style.left = e.clientX + 'px';
+    cur.style.top  = e.clientY + 'px';
+  });
+  document.querySelectorAll('a').forEach(el => {
+    el.addEventListener('mouseenter', () => cur.classList.add('big'));
+    el.addEventListener('mouseleave', () => cur.classList.remove('big'));
+  });
+
+  /* ── YHK FONT-CYCLING INTRO ──────────────────────────── */
+  const yhk = document.getElementById('yhk');
+  const FS  = 'clamp(96px,19vw,210px)';
+
+  const cycle = [
+    ["'IM Fell English', serif",    '900', FS,                       'normal', '0.04em'  ],
+    ["'Great Vibes', cursive",      '400', 'clamp(70px,14vw,160px)', 'normal', '0.02em'  ],
+    ["'Josefin Sans', sans-serif",  '100', FS,                       'normal', '0.38em'  ],
+    ["'Bebas Neue', sans-serif",    '400', FS,                       'normal', '0.14em'  ],
+    ["'DM Sans', sans-serif",       '400', FS,                       'italic', '-0.02em' ],
+    ["'Cormorant Garamond', serif", '300', FS,                       'italic', '0.07em'  ],
+    ["'Cinzel', serif",             '600', FS,                       'normal', '0.20em'  ],
+    ["'Libre Baskerville', serif",  '400', FS,                       'italic', '0.01em'  ],
+    ["monospace",                   '400', 'clamp(72px,14vw,158px)', 'normal', '0.26em'  ],
+    ["'IM Fell English', serif",    '900', FS,                       'italic', '0.03em'  ],
+    ["'Josefin Sans', sans-serif",  '100', FS,                       'normal', '0.32em'  ],
+    ["'DM Sans', sans-serif",       '300', FS,                       'italic', '-0.01em' ],
+    ["'Bebas Neue', sans-serif",    '400', FS,                       'normal', '0.12em'  ],
+    ["'Libre Baskerville', serif",  '400', FS,                       'italic', '0.02em'  ],
+    ["'Cormorant Garamond', serif", '600', FS,                       'normal', '0.05em'  ],
+    ["'Cinzel', serif",             '600', FS,                       'normal', '0.18em'  ],
+    ["'IM Fell English', serif",    '900', FS,                       'normal', '-0.01em' ],
+  ];
+
+  let idx = 0, timer;
+
+  function tick() {
+    const [ff, fw, fz, fs, ls] = cycle[idx % cycle.length];
+    yhk.style.fontFamily    = ff;
+    yhk.style.fontWeight    = fw;
+    yhk.style.fontSize      = fz;
+    yhk.style.fontStyle     = fs;
+    yhk.style.letterSpacing = ls;
+    idx++;
+  }
+
+  function settle() {
+    clearInterval(timer);
+    yhk.style.fontFamily    = "'Playfair Display', serif";
+    yhk.style.fontWeight    = '900';
+    yhk.style.fontSize      = FS;
+    yhk.style.fontStyle     = 'normal';
+    yhk.style.letterSpacing = '-0.03em';
+    /* .settled adds margin-top:-44px on next frame — snaps up without animating */
+    requestAnimationFrame(() => yhk.classList.add('settled'));
+  }
+
+  document.fonts.ready.then(() => {
+    yhk.style.opacity = '1';
+    tick();
+    timer = setInterval(tick, 82);
+    setTimeout(settle, 1400);
+  });
+</script>
+
+</body>
+</html>
