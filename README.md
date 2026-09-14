@@ -13,6 +13,10 @@ Everything shown by the terminal lives in `index.html`:
 - The `whoami` block (name, role, education, org, cert, wins counter) and the `help` block are static HTML near the top of `<body>`. The wins counter is the `data-count` attribute on `.counter`.
 - Projects, write-ups, competition results and links are the `PROJECTS`, `WRITEUPS`, `COMPETITIONS` and `LINKS` arrays at the top of the `<script>`. Add a write-up by pushing `{ slug, title, date, url, tags }` onto `WRITEUPS`; the empty-state message disappears automatically.
 
+## Resume
+
+`/resume` redirects to the latest PDF in `resume/`. To publish a new version, drop the new PDF into `resume/` and update the filename in `resume/index.html` (it appears three times). Old versions can stay for stable links.
+
 ## Local preview
 
 ```bash

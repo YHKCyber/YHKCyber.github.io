@@ -210,7 +210,7 @@
           <dt>cert</dt>
           <dd>CompTIA Security+ CE <span class="sub">Apr 2025</span></dd>
           <dt>wins</dt>
-          <dd><span class="counter" data-count="3">3</span> competition podium finishes <span class="sub">1st · 2nd · 3rd — run <button type="button" class="link-cmd" data-cmd="ctf">ctf</button> for the list</span></dd>
+          <dd><span class="counter" data-count="5">5</span> competition podium finishes <span class="sub">run <button type="button" class="link-cmd" data-cmd="ctf">ctf</button> for highlights</span></dd>
         </dl>
 
         <a class="btn" href="https://www.linkedin.com/in/yegorkryvenka" target="_blank" rel="noopener noreferrer">
@@ -228,6 +228,7 @@
           <button type="button" class="chip" data-cmd="projects">projects</button><span class="muted">things I've built and run</span>
           <button type="button" class="chip" data-cmd="writeups">writeups</button><span class="muted">CTF &amp; lab write-ups</span>
           <button type="button" class="chip" data-cmd="ctf">ctf</button><span class="muted">competition results</span>
+          <a class="chip" href="/resume/" data-cmd="resume">resume</a><span class="muted">latest resume (PDF)</span>
           <a class="chip" href="https://github.com/YHKCyber" data-cmd="github" target="_blank" rel="noopener noreferrer">github</a><span class="muted">code &amp; repos</span>
           <a class="chip" href="https://cyberskyline.com/report/Y77QX1DVRFUX" data-cmd="ncl" target="_blank" rel="noopener noreferrer">ncl</a><span class="muted">National Cyber League scouting report</span>
           <a class="chip" href="https://www.credly.com/badges/71181040-3236-499c-9ae0-dd2da5689234/public_url" data-cmd="credly" target="_blank" rel="noopener noreferrer">credly</a><span class="muted">verify Security+</span>
@@ -257,21 +258,10 @@
     github:   { url: 'https://github.com/YHKCyber', desc: 'code & repos' },
     ncl:      { url: 'https://cyberskyline.com/report/Y77QX1DVRFUX', desc: 'National Cyber League scouting report' },
     credly:   { url: 'https://www.credly.com/badges/71181040-3236-499c-9ae0-dd2da5689234/public_url', desc: 'verify Security+' },
+    resume:   { url: '/resume/', desc: 'latest resume (PDF)' },
   };
 
   const PROJECTS = [
-    {
-      slug: 'raptorhacks',
-      title: 'RaptorHacks 2026',
-      org: "Montgomery College's hackathon",
-      when: 'Mar 3 – Apr 11, 2026',
-      url: 'https://raptorhacks.com',
-      body: [
-        '"Hack the Planet" — Montgomery College\'s student hackathon: ~100 students in teams of 2–4 building and presenting projects across 7 tracks (AI, cyber, UI/UX and more), judged by industry professionals at an in-person Demo Day on April 11, 2026 at the Germantown campus.',
-        '[TODO: your role — organizer, cyber track lead, participant? — and what you built or ran]',
-      ],
-      tags: ['hackathon', 'community', 'Montgomery College'],
-    },
     {
       slug: 'endpoint-security',
       title: 'Endpoint protection rollout & malware remediation',
@@ -341,7 +331,7 @@
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const chip = (label, cmd) => `<button type="button" class="chip" data-cmd="${esc(cmd)}">${esc(label)}</button>`;
   const linkChip = (label, name) => `<a class="chip" href="${esc(LINKS[name].url)}" data-cmd="${esc(name)}" target="_blank" rel="noopener noreferrer">${esc(label)}</a>`;
-  const short = url => url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+  const short = url => (url.startsWith('/') ? 'yhkcyber.github.io' + url : url.replace(/^https?:\/\/(www\.)?/, '')).replace(/\/$/, '');
   const ext = url => `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(short(url))}</a>`;
   const errLine = msg => `<div class="err">${msg}</div>`;
 
@@ -421,12 +411,12 @@
   }
 
   function ctfList() {
-    const podiums = COMPETITIONS.filter(c => c.podium).length;
     const rows = COMPETITIONS.map(c =>
       `<span class="place${c.podium ? ' acc' : ''}">${esc(c.place)}</span>` +
       `<span>${esc(c.event)}${c.year ? ` <span class="dim">${esc(c.year)}</span>` : ''}${c.link ? ' ' + linkChip(c.link + ' report ↗', c.link) : ''}</span>`
     ).join('');
-    return `<div class="dim">competition results — ${podiums} podium finishes</div><div class="grid">${rows}</div>`;
+    return `<div class="dim">selected competition results</div><div class="grid">${rows}</div>
+      <div class="chips">${linkChip('full list on linkedin', 'linkedin')}</div>`;
   }
 
   function linkList() {
