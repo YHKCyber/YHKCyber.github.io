@@ -14,8 +14,10 @@ Personal link page for Yegor H. Kryvenka (GitHub Pages, served from `main`).
 
 ## Handoff Notes
 
-- 2026-09-14: Rebuilt the site from the old video-background link page into the terminal design (concept "B" from the design canvas). Working terminal: clickable command chips, typed commands, Tab completion, ↑/↓ history, Ctrl+L / Ctrl+C. Added `/resume` (September 2026 v3 PDF) and a `resume` command.
-- Backburner (Yegor's call, not on the site yet): a `raptorhacks` project entry. Draft copy: "RaptorHacks 2026 — Montgomery College's hackathon ('Hack the Planet'): ~100 students in teams of 2–4 across 7 tracks, Demo Day April 11, 2026 at the Germantown campus" + https://raptorhacks.com. Missing: Yegor's role and what he built/ran. Add to `PROJECTS` when he decides.
-- The wins counter is `data-count="5"` per Yegor (5 podium finishes). Only three are itemised in `COMPETITIONS` (1st PICMC/MAGIC CTF 18, 2nd Lockheed Martin CyberQuest, 3rd VelocityX) because the resume lists only those; the `ctf` output is labelled "selected" for that reason. Ask him for the other two to complete the list.
-- `WRITEUPS` is empty by design; the `writeups` command shows a "coming soon" message until entries are added.
-- LinkedIn profile (linkedin.com/in/yegorkryvenka) could not be read from this machine (auth wall); content was taken from the September 2026 resume.
+- 2026-09-15: `projects` now holds exactly one entry — the Raspberry Pi bastion host home-lab build (`bastion`), written from Yegor's draft write-up (`WriteupServerUpgradingProject.docx`, not in the repo). Work-experience bullets and club leadership are NOT projects and must not go back into `PROJECTS`. The public description deliberately omits the bastion's SSH port and internal LAN addresses.
+- `ctf` shows wins only (Blue Team Con Last Minute CTF 2026 1st of ~60, PICMC/MAGIC CTF 18 1st, Lockheed Martin CyberQuest 2nd, VelocityX 3rd, NCL 99th percentile) — no team/leadership rows; the site is deliberately less recruiter-tailored than the resume. Counter is `data-count="5"`.
+- `/resume` points at the September 2026 v4 PDF (`resume/Yegor-Kryvenka-Resume-2026-09-v4.pdf`); v3 was removed.
+- Backburner (Yegor's call, not on the site): a RaptorHacks entry. The v4 resume now states the role — "Co-organized and hosted RaptorHacks 2026, an intercollegiate hackathon at Montgomery College, building a real-time project submission and judging platform while coordinating a panel of judges, faculty, and an FDA guest speaker across tracks including dedicated cybersecurity penetration testing." Site: https://raptorhacks.com. Add to `PROJECTS` only if he asks.
+- `WRITEUPS` is empty; the `writeups` command says the bastion write-up is first up and links to the project. When the polished write-up exists, host it (e.g. `writeups/bastion.html` or a PDF) and add `{ slug: 'bastion', title, date, url, tags }`.
+- Tab completion and ↑/↓ history still work in the prompt but are no longer advertised in the help text (Yegor asked for the hint removed).
+- LinkedIn profile (linkedin.com/in/yegorkryvenka) is auth-walled from this machine; content comes from the resume and the write-up.

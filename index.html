@@ -206,11 +206,11 @@
           <dt>edu</dt>
           <dd>B.S. Cybersecurity @ Purdue University <span class="sub">A.A.S. Cybersecurity, Montgomery College · 3.88 GPA, Honors</span></dd>
           <dt>org</dt>
-          <dd>Purdue National Security &amp; Defense Society (NSDS) — Cyber Competition "A" Team <span class="sub">past: President, Montgomery College Cybersecurity Club</span></dd>
+          <dd>Purdue National Security &amp; Defense Society (NSDS) CTF Team Member <span class="sub">past: President, Montgomery College Cybersecurity Club</span></dd>
           <dt>cert</dt>
           <dd>CompTIA Security+ CE <span class="sub">Apr 2025</span></dd>
           <dt>wins</dt>
-          <dd><span class="counter" data-count="5">5</span> competition podium finishes <span class="sub">run <button type="button" class="link-cmd" data-cmd="ctf">ctf</button> for highlights</span></dd>
+          <dd><span class="counter" data-count="5">5</span> competition podium finishes <span class="sub">run <button type="button" class="link-cmd" data-cmd="ctf">ctf</button> for the list</span></dd>
         </dl>
 
         <a class="btn" href="https://www.linkedin.com/in/yegorkryvenka" target="_blank" rel="noopener noreferrer">
@@ -230,11 +230,10 @@
           <button type="button" class="chip" data-cmd="ctf">ctf</button><span class="muted">competition results</span>
           <a class="chip" href="/resume/" data-cmd="resume">resume</a><span class="muted">latest resume (PDF)</span>
           <a class="chip" href="https://github.com/YHKCyber" data-cmd="github" target="_blank" rel="noopener noreferrer">github</a><span class="muted">code &amp; repos</span>
-          <a class="chip" href="https://cyberskyline.com/report/Y77QX1DVRFUX" data-cmd="ncl" target="_blank" rel="noopener noreferrer">ncl</a><span class="muted">National Cyber League scouting report</span>
           <a class="chip" href="https://www.credly.com/badges/71181040-3236-499c-9ae0-dd2da5689234/public_url" data-cmd="credly" target="_blank" rel="noopener noreferrer">credly</a><span class="muted">verify Security+</span>
           <a class="chip" href="https://www.linkedin.com/in/yegorkryvenka" data-cmd="linkedin" target="_blank" rel="noopener noreferrer">linkedin</a><span class="muted">connect with me</span>
         </div>
-        <div class="also">also: whoami · ls · cat · open · clear — Tab completes, ↑/↓ recalls history</div>
+        <div class="also">also: whoami · ls · cat · open · clear</div>
         <noscript><div class="also">JavaScript is off, so the terminal is read-only — the links above still work.</div></noscript>
       </div>
     </section>
@@ -263,45 +262,17 @@
 
   const PROJECTS = [
     {
-      slug: 'endpoint-security',
-      title: 'Endpoint protection rollout & malware remediation',
-      org: 'Kbit Technologies',
-      when: '2026',
+      slug: 'bastion',
+      title: 'Raspberry Pi bastion host for my home lab',
+      org: 'Home lab',
+      when: 'Mar 2026 – present',
+      status: 'in progress',
       body: [
-        'Configured Microsoft Defender for Endpoint and DefenseX endpoint protection across 100+ systems.',
-        'Isolated and remediated dormant malware that leveraged anti-detection and anti-forensic techniques, fine-tuned protection policies, and expanded threat-hunting coverage.',
+        'My home lab is a Dell OptiPlex 7070 running Ubuntu Server (Cockpit, Jellyfin, Immich, a Matrix server) behind a NAT\'d ISP router. The upgrade adds a Raspberry Pi 2 Model B as a hardened bastion: only SSH is exposed to the internet, and the Ubuntu server plus a Windows desktop used as a GPU password-cracking box over RDP are reachable only by hopping through the Pi. Services that used to be LAN-only are now usable from anywhere without being exposed, and the attack surface shrinks to one hardened machine. Before/after network diagrams were drawn in Cisco Packet Tracer.',
+        'Chose Alpine Linux for the Pi over Raspberry Pi OS Lite (usability over security) and Ubuntu Core (wanted an Ubuntu One account). Hardened SSH following the Red Hat guide — root login disabled, an AllowUsers list, MaxSessions 2, a non-default port, a login banner — then locked the root account behind sudo-only access, added fail2ban (Alpine logs to /var/log/messages, not auth.log) and verified the exposed surface with an nmap scan.',
+        'Plenty of hands-on debugging along the way: a .gz flashed instead of the .img (no boot files), an underpowered micro-USB supply causing undervoltage warnings and I/O errors, a Pi with no real-time clock whose stale date silently broke repository access until openntpd was set up, and Alpine\'s setup script never persisting to the SD card after that failure. Also 3D-printed a modular case — and learned what a brim does to cooling vents.',
       ],
-      tags: ['Defender for Endpoint', 'DefenseX', 'EDR', 'threat hunting'],
-    },
-    {
-      slug: 'threat-investigation',
-      title: 'Rogue login & unauthorized device investigation',
-      org: 'Kbit Technologies',
-      when: '2026',
-      body: [
-        'Analyzed security logs and investigated rogue logins and unauthorized devices across 200+ endpoints using Microsoft Intune, maintaining continuous asset visibility.',
-      ],
-      tags: ['Intune', 'log analysis', 'incident response'],
-    },
-    {
-      slug: 'credential-migration',
-      title: 'Enterprise credential migration to NordPass',
-      org: 'Kbit Technologies',
-      when: '2026',
-      body: [
-        'Led the company-wide migration of 60+ users to NordPass through security presentations, keeping high-profile legal and financial clients within strict GLBA compliance standards.',
-      ],
-      tags: ['NordPass', 'IAM', 'GLBA / FTC Safeguards'],
-    },
-    {
-      slug: 'cyber-club',
-      title: 'Montgomery College Cybersecurity Club',
-      org: 'President',
-      when: '2024 – 2026',
-      body: [
-        'Tripled attendance to ~50 members, led 15+ technical labs and CTF preparation sessions, and coached members for competitions.',
-      ],
-      tags: ['leadership', 'CTF', 'labs'],
+      tags: ['Alpine Linux', 'SSH hardening', 'fail2ban', 'nmap', 'Raspberry Pi', 'Ubuntu Server', 'Packet Tracer'],
     },
   ];
 
@@ -309,12 +280,11 @@
   const WRITEUPS = [];
 
   const COMPETITIONS = [
+    { place: '1st', event: 'Blue Team Con — Last Minute CTF 2026 · 1st of ~60', year: '2026', podium: true },
     { place: '1st', event: 'PICMC Cyber Challenge · MAGIC CTF 18', year: '2026', podium: true },
     { place: '2nd', event: 'Lockheed Martin CyberQuest Competition', year: '2025', podium: true },
     { place: '3rd', event: 'VelocityX Cyber Escape Room Challenge', year: '', podium: true },
-    { place: '99th pct', event: 'National Cyber League — Spring 2026 Team Game', year: '2026', link: 'ncl' },
-    { place: 'team', event: 'Purdue NSDS Cybersecurity Competition "A" Team', year: '' },
-    { place: 'lead', event: 'President, Montgomery College Cybersecurity Club — tripled attendance to ~50, led 15+ labs & CTF prep sessions', year: '' },
+    { place: '99th pct', event: 'National Cyber League — Spring 2026 Team Game', year: '2026' },
   ];
 
   /* ── dom ──────────────────────────────────────────────── */
@@ -374,7 +344,8 @@
     const rows = PROJECTS.map(p =>
       `${chip(p.slug, 'cat projects/' + p.slug)}<span>${esc(p.title)} <span class="dim">— ${esc(p.org)}</span></span>`
     ).join('');
-    return `<div class="dim">${PROJECTS.length} projects — click one, or run cat projects/&lt;name&gt;</div><div class="grid stack">${rows}</div>`;
+    const n = PROJECTS.length;
+    return `<div class="dim">${n} project${n === 1 ? '' : 's'} — click ${n === 1 ? 'it' : 'one'}, or run cat projects/&lt;name&gt;</div><div class="grid stack">${rows}</div>`;
   }
 
   function projectDoc(slug) {
@@ -384,17 +355,18 @@
     const links = (p.url ? chip(short(p.url) + ' ↗', 'open ' + p.url) : '') + chip('projects', 'projects');
     return `<div class="doc">
       <h2>${esc(p.title)}</h2>
-      <div class="meta">${esc(p.org)} · ${esc(p.when)}</div>
+      <div class="meta">${esc(p.org)} · ${esc(p.when)}${p.status ? ` · <span class="acc">${esc(p.status)}</span>` : ''}</div>
       ${body}
       <div class="tags">tags: ${p.tags.map(esc).join(' · ')}</div>
+      ${p.status ? '<div class="dim">full write-up coming to writeups/</div>' : ''}
       <div class="chips">${links}</div>
     </div>`;
   }
 
   function writeupList() {
     if (!WRITEUPS.length) {
-      return `<div>writeups/ is empty <span class="dim">— CTF and lab write-ups are coming soon.</span></div>
-        <div class="chips">${linkChip('follow on linkedin', 'linkedin')}</div>`;
+      return `<div>writeups/ is empty <span class="dim">— first up: the Pi bastion host build, then CTF write-ups.</span></div>
+        <div class="chips">${chip('bastion', 'cat projects/bastion')}${linkChip('follow on linkedin', 'linkedin')}</div>`;
     }
     const rows = WRITEUPS.map(w =>
       `${chip(w.slug, 'cat writeups/' + w.slug)}<span>${esc(w.title)} <span class="dim">— ${esc(w.date)}</span></span>`
@@ -413,10 +385,10 @@
   function ctfList() {
     const rows = COMPETITIONS.map(c =>
       `<span class="place${c.podium ? ' acc' : ''}">${esc(c.place)}</span>` +
-      `<span>${esc(c.event)}${c.year ? ` <span class="dim">${esc(c.year)}</span>` : ''}${c.link ? ' ' + linkChip(c.link + ' report ↗', c.link) : ''}</span>`
+      `<span>${esc(c.event)}${c.year ? ` <span class="dim">${esc(c.year)}</span>` : ''}</span>`
     ).join('');
-    return `<div class="dim">selected competition results</div><div class="grid">${rows}</div>
-      <div class="chips">${linkChip('full list on linkedin', 'linkedin')}</div>`;
+    return `<div class="dim">competition wins</div><div class="grid">${rows}</div>
+      <div class="chips">${linkChip('ncl scouting report ↗', 'ncl')}</div>`;
   }
 
   function linkList() {
