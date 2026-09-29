@@ -8,6 +8,7 @@ Personal link page for Yegor H. Kryvenka (GitHub Pages, served from `main`).
 - Keep it simple and fast: dark terminal aesthetic, one accent color (`--acc: #6ee4a5`), no images, no frameworks.
 - Content lives in two places in `index.html`: the static `whoami` / `help` blocks in `<body>`, and the `PROJECTS`, `WRITEUPS`, `COMPETITIONS`, `LINKS` arrays at the top of the `<script>`. Edit data there rather than adding markup.
 - `/resume` is a redirect page (`resume/index.html`) pointing at the newest PDF in `resume/`. New resume = add the PDF, update the filename in that page.
+- `/resume` is kept out of search: `robots.txt` disallows it and the redirect page carries `<meta name="robots" content="noindex">`. Keep both when changing resume files — the URL stays public and shareable, it's just not crawled.
 - LinkedIn (`https://www.linkedin.com/in/yegorkryvenka`) is the primary call to action; everything else is secondary.
 - Facts on the page come from Yegor's resume — don't invent roles, dates or numbers. Unknown facts go in as a visibly marked `[TODO: …]` line, which renders red, so they get noticed before shipping.
 - Preview locally with `python3 -m http.server 8000`. Deploy is just `git push` to `main`.

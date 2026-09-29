@@ -1,0 +1,5 @@
+# yhkcyber.github.io
+
+User-agent: *
+Disallow: /resume
+Disallow: /resume/
