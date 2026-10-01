@@ -262,11 +262,25 @@
 
   const PROJECTS = [
     {
+      slug: 'tidalrpc',
+      title: 'TidalRPC — native macOS rewrite',
+      org: 'Open source · Swift · GPL-3.0',
+      when: 'Oct 2026',
+      url: 'https://github.com/YHKCyber/tidalrpc',
+      body: [
+        'A native Swift/AppKit menu-bar app that shows what you\'re playing in TIDAL as Discord Rich Presence, with an on-demand SwiftUI settings window — no Electron, Node or third-party packages. It\'s a Mac-only rewrite of rxri/tidalRPC (an Electron app by ririxi), credited in the README and kept under the original\'s GPL-3.0 license.',
+        'The Electron version had a memory leak in a native dependency and was far heavier than it needed to be on a Mac. Measured on one Apple silicon Mac: app size 449 MB → 1.4 MB, memory ~130 MB across three processes → ~21 MB in one, CPU up to 13–22% → ~0.2%. It also keeps working when TIDAL is minimized or on another desktop by reading TIDAL\'s window title, and it backs off while the Mac sleeps, music is paused, or Low Power Mode is on.',
+        'Privacy by design: it talks to Discord only through the local Rich Presence socket and never captures screenshots. Ships with unit tests, a CI script, a release script, and contributor and maintainer docs. Requires macOS 26 on Apple silicon.',
+      ],
+      tags: ['Swift', 'AppKit', 'SwiftUI', 'macOS', 'Discord IPC', 'open source'],
+    },
+    {
       slug: 'bastion',
       title: 'Raspberry Pi bastion host for my home lab',
       org: 'Home lab',
       when: 'Mar 2026 – present',
       status: 'in progress',
+      writeupSoon: true,
       body: [
         'My home lab is a Dell OptiPlex 7070 running Ubuntu Server (Cockpit, Jellyfin, Immich, a Matrix server) behind a NAT\'d ISP router. The upgrade adds a Raspberry Pi 2 Model B as a hardened bastion: only SSH is exposed to the internet, and the Ubuntu server plus a Windows desktop used as a GPU password-cracking box over RDP are reachable only by hopping through the Pi. Services that used to be LAN-only are now usable from anywhere without being exposed, and the attack surface shrinks to one hardened machine. Before/after network diagrams were drawn in Cisco Packet Tracer.',
         'Chose Alpine Linux for the Pi over Raspberry Pi OS Lite (usability over security) and Ubuntu Core (wanted an Ubuntu One account). Hardened SSH following the Red Hat guide — root login disabled, an AllowUsers list, MaxSessions 2, a non-default port, a login banner — then locked the root account behind sudo-only access, added fail2ban (Alpine logs to /var/log/messages, not auth.log) and verified the exposed surface with an nmap scan.',
@@ -359,7 +373,7 @@
       <div class="meta">${esc(p.org)} · ${esc(p.when)}${p.status ? ` · <span class="acc">${esc(p.status)}</span>` : ''}</div>
       ${body}
       <div class="tags">tags: ${p.tags.map(esc).join(' · ')}</div>
-      ${p.status ? '<div class="dim">full write-up coming to writeups/</div>' : ''}
+      ${p.writeupSoon ? '<div class="dim">full write-up coming to writeups/</div>' : ''}
       <div class="chips">${links}</div>
     </div>`;
   }
